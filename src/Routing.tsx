@@ -2,6 +2,7 @@ import { LoginPage } from "src/pages/LoginPage";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { SignUpPage } from "./pages/SignUpPage";
 import { QuizzesPage } from "./pages/QuizzesPage";
+import { CreateQuizPage } from "./pages/CreateQuizPage";
 
 const Routing = () => {
   return (
@@ -18,6 +19,10 @@ const Routing = () => {
     <Route
         path={`/quizzes`}
         element={<QuizzesPage />}
+      />
+      <Route
+        path={`/create-quiz`}
+        element={<CreateQuizPage />}
       />
   </Routes>
   );

@@ -3,7 +3,6 @@ import { FC, memo, useState } from 'react';
 
 import { styles } from './styles';
 import { useNavigate } from 'react-router-dom';
-import api from 'src/api/axios';
 import { useLoginData } from '../../hooks/useLoginData';
 
 export interface LoginSectionProps {
