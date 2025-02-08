@@ -14,6 +14,7 @@ export const basicTheme = createTheme({
         blue: "#93bbfa",
         darkBlue: "#0241a6",
         lightBlue: "#d4e3fa",
+        red: "#ab2424",
     },
   },
   typography: {

@@ -6,6 +6,8 @@ import { CustomBox } from 'src/UI/CustomBox';
 import { styles } from './styles';
 import { AddQuestionCard } from '../AddQuestionCard';
 import { QuestionType } from 'src/types/quiz';
+import { useNewQuiz } from 'src/modules/CreateQuizzes/store/useNewQuiz';
+import { useNavigate } from 'react-router-dom';
 
 export interface CreateQuestionsSectionProps {}
 
@@ -20,6 +22,8 @@ const defaultQuestion: QuestionType = {
 
 export const CreateQuestionsSection: FC<CreateQuestionsSectionProps> = memo(() => {
   const [questions, setQuestions] = useState<QuestionType[]>([defaultQuestion]);
+  const { quiz, setNewQuiz } = useNewQuiz();
+  const navigate = useNavigate();
 
   const onTitleChange = (title: string, index: number) => {
     const newQuestions = [...questions];
@@ -46,6 +50,17 @@ export const CreateQuestionsSection: FC<CreateQuestionsSectionProps> = memo(() =
     setQuestions([...questions, defaultQuestion]);
   };
 
+  const onSubmit = () => {
+    setNewQuiz({
+        ...quiz,
+        questions,
+    });
+
+    console.log(quiz);
+
+    navigate("/create-quiz/success");
+  };
+
   return (
         <CustomBox style={styles.root}>
             <Box sx={styles.header}>
@@ -56,6 +71,8 @@ export const CreateQuestionsSection: FC<CreateQuestionsSectionProps> = memo(() =
 
             {questions.map((question, index) => (
                 <AddQuestionCard
+                  canBeDeleted={questions.length > 1}
+                  onDelete={() => setQuestions(questions.filter((_, qIndex) => qIndex !== index))}
                   setCurrentCorrectOption={(indexItem) => setCurrentCorrectOption(index, indexItem)}
                   key={index} 
                   title={question.title} 
@@ -66,7 +83,7 @@ export const CreateQuestionsSection: FC<CreateQuestionsSectionProps> = memo(() =
                 />
             ))}
 
-            <StyledButton title="Submit" onClick={() => {}} />
+            <StyledButton title="Submit" onClick={onSubmit} />
         </CustomBox>
   );
 });
