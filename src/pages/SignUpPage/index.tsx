@@ -8,7 +8,7 @@ interface SignUpPageProps {}
 
 export const SignUpPage: FC<SignUpPageProps> = () => {
   return (
-    <Container sx={styles.root}>
+    <Container sx={styles.root} maxWidth={false}>
       <LoginSection type="signup" />
     </Container>
   );

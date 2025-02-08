@@ -5,5 +5,6 @@ export const styles = {
         marginTop: 8,
         gap: 2,
         alignItems: "center",
+        justifyContent: "center",
     },
 };

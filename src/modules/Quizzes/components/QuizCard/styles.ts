@@ -1,4 +1,11 @@
 export const styles = {
+    root: {
+        width: 200,
+        height: 200,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+    },
     textContent: {
         px: 4,
         py: 2,

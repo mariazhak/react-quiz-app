@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { FC, memo } from 'react';
 
 import { styles } from './styles';
@@ -9,8 +9,7 @@ export interface QuizCardProps {}
 
 export const QuizCard: FC<QuizCardProps> = memo(() => {
   return (
-    <CustomBox style={{ width: 200}}>
-        <img style={styles.image} src="https://t3.ftcdn.net/jpg/02/36/99/22/360_F_236992283_sNOxCVQeFLd5pdqaKGh8DRGMZy7P4XKm.jpg" alt="quiz" />
+    <CustomBox style={styles.root}>
         <Box sx={styles.textContent}>
             <Box sx={styles.text}>
                 <Typography variant="h3">Quiz Title</Typography>

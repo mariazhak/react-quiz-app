@@ -8,7 +8,7 @@ interface LoginPageProps {}
 
 export const LoginPage: FC<LoginPageProps> = () => {
   return (
-    <Container sx={styles.root}>
+    <Container sx={styles.root} maxWidth={false}>
       <LoginSection type="login" />
     </Container>
   );

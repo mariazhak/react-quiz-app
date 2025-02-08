@@ -78,7 +78,7 @@ export const LoginSection: FC<LoginSectionProps> = memo(({ type }) => {
                 )}
             </Box>
 
-            <Button variant="contained" sx={styles.button} size="large" onClick={type === "signup" ? onSignUpContinue : ()=>{}}>Continue</Button>
+            <Button variant="contained" sx={styles.button} size="large" onClick={type === "signup" ? onSignUpContinue : ()=> navigate("/quizzes")}>Continue</Button>
 
             <Box sx={styles.link}>
                 <Typography variant="body1">

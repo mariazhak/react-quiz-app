@@ -51,10 +51,7 @@ export const styles = {
         },
     },
     textField: {
-         width: {
-            xs: "100%",
-            sm: "70%",
-         },
+         width: "100%",
         "& .MuiInputLabel-root": {
             color: "mainPalette.darkBlue",
         },

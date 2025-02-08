@@ -8,7 +8,7 @@ interface QuizzesPageProps {}
 
 export const QuizzesPage: FC<QuizzesPageProps> = () => {
   return (
-    <Container sx={styles.root}>
+    <Container sx={styles.root} maxWidth={false}>
         <Header />
         <QuizzesSection />
     </Container>
