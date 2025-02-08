@@ -34,7 +34,27 @@ export const styles = {
         alignItems: "center",
         gap: 2.5,
     },
+    nameTextFieldGroup: {
+        display: "flex",
+        flexDirection: {
+            xs: "column",
+            sm: "row",
+        },
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 2.5,
+    },
+    halfTextField: {
+        width: {
+            xs: "100%",
+            sm: "35%",
+        },
+    },
     textField: {
+         width: {
+            xs: "100%",
+            sm: "70%",
+         },
         "& .MuiInputLabel-root": {
             color: "mainPalette.darkBlue",
         },

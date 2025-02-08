@@ -31,7 +31,7 @@ export const basicTheme = createTheme({
     h2: {
       fontFamily: RockStarBoldFontFamily,
       fontWeight: 700,
-      fontSize: "20px",
+      fontSize: "32px",
       lineHeight: "normal",
     },
     h3: {
@@ -54,8 +54,8 @@ export const basicTheme = createTheme({
     },
     h6: {
       fontFamily: RockStarBoldFontFamily,
-      fontWeight: 700,
-      fontSize: "45px",
+      fontWeight: 400,
+      fontSize: "14px",
       lineHeight: "100%",
     },
   },

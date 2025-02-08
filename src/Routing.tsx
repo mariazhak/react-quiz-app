@@ -1,6 +1,7 @@
 import { LoginPage } from "src/pages/LoginPage";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { SignUpPage } from "./pages/SignUpPage";
+import { QuizzesPage } from "./pages/QuizzesPage";
 
 const Routing = () => {
   return (
@@ -14,6 +15,10 @@ const Routing = () => {
       path={`/signup`}
       element={<SignUpPage />}
     />
+    <Route
+        path={`/quizzes`}
+        element={<QuizzesPage />}
+      />
   </Routes>
   );
 };
