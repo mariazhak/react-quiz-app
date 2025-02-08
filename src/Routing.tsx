@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { SignUpPage } from "./pages/SignUpPage";
 import { QuizzesPage } from "./pages/QuizzesPage";
 import { CreateQuizPage } from "./pages/CreateQuizPage";
+import { CreateQuestionsPage } from "./pages/CreateQuestionPage";
 
 const Routing = () => {
   return (
@@ -23,6 +24,10 @@ const Routing = () => {
       <Route
         path={`/create-quiz`}
         element={<CreateQuizPage />}
+      />
+      <Route
+        path={`/create-quiz/questions`}
+        element={<CreateQuestionsPage />}
       />
   </Routes>
   );
