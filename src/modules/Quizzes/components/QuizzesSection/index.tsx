@@ -3,23 +3,18 @@ import { FC, memo } from 'react';
 import { QuizCard } from '../QuizCard';
 
 import { styles } from './styles';
+import { useQuizzesData } from '../../hooks/useQuizzesData';
 
 export interface QuizzesSectionProps {}
 
 export const QuizzesSection: FC<QuizzesSectionProps> = memo(() => {
+  const { quizzes} = useQuizzesData();
+
   return (
     <Box sx={styles.root}>
-        <QuizCard />
-
-        <QuizCard />
-
-        <QuizCard />
-
-        <QuizCard />
-
-        <QuizCard />
-
-        <QuizCard />
+      {quizzes.map((quiz, index) => (
+        <QuizCard key={index} quiz={quiz} />
+      ))}
     </Box>
   );
 });
