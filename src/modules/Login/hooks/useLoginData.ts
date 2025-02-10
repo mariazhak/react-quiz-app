@@ -1,10 +1,12 @@
 import { useCallback, useState } from "react";
 import { useApiError } from "src/hooks/useApiError";
 import loginApi from "../api";
+import { useUserStore } from "../store/useUserStore";
 
 export const useLoginData = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const { apiError, handleError } = useApiError();
+  const { setUser } = useUserStore();
 
   const postRegister = useCallback(async (firstName: string, lastName: string, email: string, password: string) => {
     setLoading(true);
@@ -12,13 +14,11 @@ export const useLoginData = () => {
     try {
       const response  = await loginApi.postRegister(firstName, lastName, email, password);
 
-      console.log(response);
+      setUser(response);
 
         return true;
     } catch (error) {
       handleError(error);
-      console.log(error);
-
         return false;
     } finally {
       setLoading(false);
@@ -31,12 +31,11 @@ export const useLoginData = () => {
     try {
       const response  = await loginApi.postLogin(email, password);
 
-      console.log(response);
+      setUser(response);
 
         return true;
     } catch (error) {
       handleError(error);
-      console.log(error);
 
         return false;
     } finally {
