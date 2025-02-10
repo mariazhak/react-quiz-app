@@ -1,5 +1,12 @@
 import dummyQuizzes from "../constants";
+import { useQuizzesStore } from "../store/useQuizzesStore";
 
 export const useQuizzesData = () => {
-  return { quizzes: dummyQuizzes };
+  const { quizzes, setQuizzes } = useQuizzesStore();
+
+  const fetchQuizzes = () => {
+    setQuizzes(dummyQuizzes);
+  };
+
+  return { quizzes, fetchQuizzes };
 };

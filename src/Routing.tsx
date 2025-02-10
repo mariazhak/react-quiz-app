@@ -5,6 +5,7 @@ import { QuizzesPage } from "./pages/QuizzesPage";
 import { CreateQuizPage } from "./pages/CreateQuizPage";
 import { CreateQuestionsPage } from "./pages/CreateQuestionPage";
 import { CreateQuizSuccessPage } from "./pages/CreateQuizSuccessPage";
+import { AboutQuizPage } from "./pages/AboutQuizPage";
 
 const Routing = () => {
   return (
@@ -34,6 +35,7 @@ const Routing = () => {
         path={`/create-quiz/success`}
         element={<CreateQuizSuccessPage />}
       />
+      <Route path="/quizzes/:quizId" element={<AboutQuizPage />} />
   </Routes>
   );
 };
