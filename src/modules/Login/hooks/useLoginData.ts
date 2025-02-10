@@ -25,5 +25,24 @@ export const useLoginData = () => {
     }
   }, []);
 
-  return { loading, apiError, postRegister };
+  const postLogin = useCallback(async (email: string, password: string) => {
+    setLoading(true);
+
+    try {
+      const response  = await loginApi.postLogin(email, password);
+
+      console.log(response);
+
+        return true;
+    } catch (error) {
+      handleError(error);
+      console.log(error);
+
+        return false;
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return { loading, apiError, postRegister, postLogin };
 };

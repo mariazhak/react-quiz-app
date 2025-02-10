@@ -50,9 +50,9 @@ export const CreateQuizSection: FC<CreateQuizSectionProps> = memo(() => {
             <Typography variant="h1">Create Quiz</Typography>
 
             <Box sx={styles.textFieldGroup}>
-                <CustomTextField label="Title" value={title} onChange={handleTitleChange} error={titleError !== ""} errorText={titleError} />
+                <CustomTextField label="Title" value={title} onChange={handleTitleChange} error={titleError !== ""} errorText={titleError} maxLength={25} />
 
-                <CustomTextField label="Description" value={description} isMultiline={true} onChange={handleDescriptionChange} />
+                <CustomTextField label="Description" value={description} isMultiline={true} onChange={handleDescriptionChange} maxLength={100} />
             </Box>
 
             <StyledButton title="Add questions" onClick={onAddQuestionsClick} />

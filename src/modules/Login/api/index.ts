@@ -15,6 +15,18 @@ const loginApi = {
       throw error;
     }
   },
+  postLogin: async (email: string, password: string) => {
+    try {
+      const response = await api.post("login", {
+        email,
+        password,
+      });
+
+      return response.data as { status: string };
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default loginApi;

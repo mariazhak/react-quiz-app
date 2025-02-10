@@ -4,6 +4,10 @@ import { FC, memo, useState } from 'react';
 import { styles } from './styles';
 import { useNavigate } from 'react-router-dom';
 import { useLoginData } from '../../hooks/useLoginData';
+import { CustomTextField } from 'src/UI/CustomTextField';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { validationSignUpSchema } from '../../constants';
 
 export interface LoginSectionProps {
     type: "login" | "signup";
@@ -16,7 +20,15 @@ export const LoginSection: FC<LoginSectionProps> = memo(({ type }) => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const { loading, apiError, postRegister } = useLoginData();
+    const { loading, apiError, postRegister, postLogin } = useLoginData();
+
+    const {
+        reset,
+        handleSubmit,
+        formState: { errors },
+      } = useForm({
+        resolver: yupResolver(validationSignUpSchema),
+      });
 
     const handleNavigation = () => {
         if (type === "login") {
@@ -54,6 +66,14 @@ export const LoginSection: FC<LoginSectionProps> = memo(({ type }) => {
         }
     };
 
+    const onLoginContinue =  async () => {
+        const response = await postLogin(email, password);
+
+        if (response) {
+            navigate('/quizzes');
+        }
+    };
+
 
   return (
     <Box sx={styles.root}>
@@ -63,21 +83,21 @@ export const LoginSection: FC<LoginSectionProps> = memo(({ type }) => {
             <Box sx={styles.textFieldGroup}>
                {type === "signup" && (
                  <Box sx={styles.nameTextFieldGroup}>
-                    <TextField label="First Name" sx={[styles.textField, styles.halfTextField]} value={firstName} onChange={handleFirstNameChange} />
+                    <CustomTextField isHalf label="First Name" value={firstName} onChange={handleFirstNameChange} error={!!errors.firstName} errorText={errors.firstName?.message}/>
 
-                    <TextField label="Last Name" sx={[styles.textField, styles.halfTextField]} value={lastName} onChange={handleLastNameChange}/>
+                    <CustomTextField isHalf label="Last Name" value={lastName} onChange={handleLastNameChange} error={!!errors.lastName} errorText={errors.lastName?.message}/>
                 </Box>)}
 
-                <TextField label="Email" sx={styles.textField} value={email} onChange={handleEmailChange}/>
+                <CustomTextField label="Email" value={email} onChange={handleEmailChange} error={!!errors.email} errorText={errors.email?.message} />
 
-                <TextField label="Password" type="password" sx={styles.textField} value={password} onChange={handlePasswordChange} />
+                <CustomTextField label="Password" type="password" value={password} onChange={handlePasswordChange} error={!!errors.password} errorText={errors.password?.message} />
 
                 {type === "signup" && (
-                    <TextField label="Confirm Password" type="password" sx={styles.textField} />
+                    <CustomTextField label="Confirm Password" type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} error={!!errors.confirmPassword} errorText={errors.confirmPassword?.message} />
                 )}
             </Box>
 
-            <Button variant="contained" sx={styles.button} size="large" onClick={type === "signup" ? onSignUpContinue : ()=> navigate("/quizzes")}>Continue</Button>
+            <Button loading={loading} variant="contained" sx={styles.button} size="large" onClick={type === "signup" ? handleSubmit(onSignUpContinue) : handleSubmit(onLoginContinue)}>Continue</Button>
 
             <Box sx={styles.link}>
                 <Typography variant="body1">

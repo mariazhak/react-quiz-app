@@ -23,7 +23,7 @@ export const AddQuestionCard: FC<AddQuestionCardProps> = memo(({ title, onTitleC
 
   return (
         <CustomBox style={{ backgroundColor: "mainPalette.lightBlue", gap: 2}}>
-            <CustomTextField label="Question" value={title} onChange={onTitleChangeLocal} />
+            <CustomTextField label="Question" value={title} onChange={onTitleChangeLocal} maxLength={50} />
 
             <QuestionOptionTextField value={options[0]} onChange={(event) => onOptionsChange([event.target.value, options[1], options[2], options[3]])} placeholder="Option 1" isSelected={correctOption === 0} setIsSelected={()=> setCurrentCorrectOption(0)}/>
 

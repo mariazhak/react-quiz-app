@@ -12,12 +12,18 @@ export interface QuestionOptionTextFieldProps {
 }
 
 export const QuestionOptionTextField: FC<QuestionOptionTextFieldProps> = memo(({ value, onChange, isSelected, setIsSelected = ()=>{}, placeholder }) => {
+    const onTextFieldChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.value.length > 20) {
+            return;
+        }
+        onChange(event);
+    };
   return (
     <TextField
         placeholder={placeholder}
         sx={[value==="" ? styles.emptyTextField : styles.textField]}
         value={value}
-        onChange={onChange}
+        onChange={onTextFieldChange}
         id="input-with-icon-textfield"
         label=""
         slotProps={{

@@ -1,7 +1,7 @@
 import { QuizType } from "src/types/quiz";
 import { UserType } from "src/types/user";
 
-const dummyUser: UserType = {
+export const dummyUser: UserType = {
     id: "1",
     first_name: "Alice",
     second_name: "Johnson",
