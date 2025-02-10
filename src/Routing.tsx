@@ -6,6 +6,8 @@ import { CreateQuizPage } from "./pages/CreateQuizPage";
 import { CreateQuestionsPage } from "./pages/CreateQuestionPage";
 import { CreateQuizSuccessPage } from "./pages/CreateQuizSuccessPage";
 import { AboutQuizPage } from "./pages/AboutQuizPage";
+import { QuizQuestionPage } from "./pages/QuizQuestionPage";
+import { QuizResultsPage } from "./pages/QuizResultsPage";
 
 const Routing = () => {
   return (
@@ -36,6 +38,13 @@ const Routing = () => {
         element={<CreateQuizSuccessPage />}
       />
       <Route path="/quizzes/:quizId" element={<AboutQuizPage />} />
+
+      <Route path="/quizzes/:quizId/:questionId" element={<QuizQuestionPage />} />
+
+      <Route
+        path={`/quizzes/results`}
+        element={<QuizResultsPage />}
+      />
   </Routes>
   );
 };
