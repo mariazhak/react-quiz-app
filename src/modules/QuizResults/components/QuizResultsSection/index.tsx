@@ -31,6 +31,8 @@ export const QuizResultsSection: FC<QuizResultsSectionProps> = memo(() => {
             <QuizResultCard key={index} question={question} questionId={index + 1} selectedOption={optionsChosen[index]} />
         ))}
 
+        <Typography variant="h3">Rate quiz:</Typography>
+
         <StyledButton title="Go back to quizzes" onClick={handleGoBackClick} />
     </Box>
   );

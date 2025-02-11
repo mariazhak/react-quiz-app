@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { FC, memo, useEffect } from 'react';
-import { QuizCard } from '../QuizCard';
+import { QuizCard } from '../../../../components/QuizCard';
 
 import { styles } from './styles';
 import { useQuizzesData } from '../../hooks/useQuizzesData';

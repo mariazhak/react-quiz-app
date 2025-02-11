@@ -18,7 +18,7 @@ const defaultQuestion: QuestionType = {
     option2: "",
     option3: "",
     option4: "",
-    correct_option: 1,
+    correct_option: 0,
 };
 
 export const CreateQuestionsSection: FC<CreateQuestionsSectionProps> = memo(() => {
@@ -49,13 +49,12 @@ export const CreateQuestionsSection: FC<CreateQuestionsSectionProps> = memo(() =
   };
 
   const addQuestion = () => {
-    setQuestions([...questions, defaultQuestion]);
+    setQuestions((prev) => [...prev, defaultQuestion]);
   };
 
   const onSubmit = async () => {
     const newQuiz = { ...quiz, questions };
     setNewQuiz(newQuiz);
-    console.log(newQuiz);
 
     const response = await postCreateQuiz(newQuiz);
 

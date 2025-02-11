@@ -12,7 +12,7 @@ export const componentToApiQuiz = (quiz: QuizType) => {
 export const componentToApiQuestion = (question: QuestionType, index: number) => {
     return {
         id: Number(index) + 1,
-        answer_id: question.correct_option,
+        answer_id: Number(question.correct_option) + 1,
         answer1: question.option1,
         answer2: question.option2,
         answer3: question.option3,
