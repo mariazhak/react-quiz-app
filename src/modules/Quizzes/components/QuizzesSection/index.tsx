@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { FC, memo, useEffect } from 'react';
 import { QuizCard } from '../QuizCard';
 
@@ -13,6 +13,14 @@ export const QuizzesSection: FC<QuizzesSectionProps> = memo(() => {
   useEffect(() => {
     void fetchQuizzes();
   }, []);
+
+  if (quizzes.length === 0) {
+    return (
+      <Box sx={styles.root}>
+        <Typography variant="h1">No quizzes here yet</Typography>
+      </Box>
+    )
+  }
 
   return (
     <Box sx={styles.root}>

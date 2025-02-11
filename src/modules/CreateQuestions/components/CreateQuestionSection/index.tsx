@@ -18,7 +18,7 @@ const defaultQuestion: QuestionType = {
     option2: "",
     option3: "",
     option4: "",
-    correct_option: 0,
+    correct_option: 1,
 };
 
 export const CreateQuestionsSection: FC<CreateQuestionsSectionProps> = memo(() => {
@@ -44,7 +44,7 @@ export const CreateQuestionsSection: FC<CreateQuestionsSectionProps> = memo(() =
 
   const setCurrentCorrectOption = (questionIndex: number, index: number) => {
     const newQuestions = [...questions];
-    newQuestions[questionIndex].correct_option = index;
+    newQuestions[questionIndex].correct_option = Number(index);
     setQuestions(newQuestions);
   };
 
@@ -55,6 +55,7 @@ export const CreateQuestionsSection: FC<CreateQuestionsSectionProps> = memo(() =
   const onSubmit = async () => {
     const newQuiz = { ...quiz, questions };
     setNewQuiz(newQuiz);
+    console.log(newQuiz);
 
     const response = await postCreateQuiz(newQuiz);
 
@@ -85,7 +86,7 @@ export const CreateQuestionsSection: FC<CreateQuestionsSectionProps> = memo(() =
                 />
             ))}
 
-            {apiError && <Typography variant="body1" color="error">{apiError}</Typography>}
+            {apiError && <Typography variant="body1" color="error">Error creating quiz. Try again later</Typography>}
 
             <StyledButton loading={loading} title="Submit" onClick={onSubmit}  />
         </CustomBox>

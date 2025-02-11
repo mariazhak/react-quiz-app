@@ -10,6 +10,7 @@ export const useCreateQuiz = () => {
 
   const postCreateQuiz = useCallback(async (quiz: QuizType) => {
     setLoading(true);
+    console.log(componentToApiQuiz(quiz));
 
     try {
         const response = await createQuizApi.postCreateQuiz(componentToApiQuiz(quiz));
@@ -18,7 +19,6 @@ export const useCreateQuiz = () => {
 
       return true;
     } catch (error) {
-        console.log(error);
       handleError(error);
 
         return false;

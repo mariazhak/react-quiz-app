@@ -25,10 +25,11 @@ export type QuizApiType = {
 export type QuestionApiType = {
     id: number;
     answer_id: number;
-    question1: string;
-    question2: string;
-    question3: string;
-    question4: string;
+    question: string;
+    answer1: string;
+    answer2: string;
+    answer3: string;
+    answer4: string;
 };
 
 export type QuizShortInfoType = {
