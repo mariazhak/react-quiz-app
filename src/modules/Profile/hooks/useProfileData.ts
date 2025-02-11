@@ -20,5 +20,15 @@ export const useProfileData = () => {
     }
   }, []);
 
-  return { photo, apiError, loading, getLogo };
+  const deleteAccount = useCallback(async (userId: number) => {
+    try {
+      await profileApi.deleteAccount(userId);
+      return true;
+    } catch (error) {
+      handleError(error);
+      return false;
+    }
+  }, []);
+
+  return { photo, apiError, loading, getLogo, deleteAccount };
 };
