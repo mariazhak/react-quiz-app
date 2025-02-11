@@ -15,7 +15,7 @@ export const QuizzesSection: FC<QuizzesSectionProps> = memo(() => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket(`ws://${socketUrl}/ws`);
+    const ws = new WebSocket(`ws://${socketUrl}`);
 
     ws.onopen = () => console.log('Connected to WebSocket logs');
     
