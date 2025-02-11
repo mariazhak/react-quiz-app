@@ -7,7 +7,7 @@ import { apiToComponentQuiz } from "src/helpers/adaptQuizData";
 export const useQuizQuestions = () => {
   const { apiError, handleError } = useApiError();
   const [loading, setLoading] = useState<boolean>(false);
-  const { setQuiz} = useCurrentQuizStore();
+  const { setQuiz, setQuizId } = useCurrentQuizStore();
 
   const fetchQuizQuestions = useCallback(async (quizId: number) => {
     setLoading(true);
@@ -15,6 +15,8 @@ export const useQuizQuestions = () => {
       const response = await quizQuestionsApi.getQuizQuestions(quizId);
 
       setQuiz(apiToComponentQuiz(response));
+
+      setQuizId(quizId);
 
       return true;
     } catch (error) {
