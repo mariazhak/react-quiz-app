@@ -4,22 +4,21 @@ import { FC, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledButton } from "src/UI/StyledButton";
 import { useQuizResults } from "../../store/useQuizResults";
-import { useQuizzesStore } from "src/modules/Quizzes/store/useQuizzesStore";
 import { QuizResultCard } from "../QuizResultCard";
 import { styles } from "./styles";
+import { useCurrentQuizStore } from "src/modules/AboutQuiz/store/useCurrentQuizStore";
 
 export interface QuizResultsSectionProps {
 }
 
 export const QuizResultsSection: FC<QuizResultsSectionProps> = memo(() => {
     const navigate = useNavigate();
-    const { quizId, optionsChosen, reset } = useQuizResults();
-    const { quizzes } = useQuizzesStore();
-
-    const quiz = quizzes.find((quiz) => quiz.id === quizId) ?? quizzes[0];
+    const { optionsChosen, reset } = useQuizResults();
+    const { quiz, resetStore } = useCurrentQuizStore();
 
     const handleGoBackClick = () => {
         reset();
+        resetStore();
         navigate("/quizzes");
     };
 

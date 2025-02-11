@@ -11,7 +11,7 @@ export const QuizzesSection: FC<QuizzesSectionProps> = memo(() => {
   const { quizzes, fetchQuizzes } = useQuizzesData();
 
   useEffect(() => {
-    fetchQuizzes();
+    void fetchQuizzes();
   }, []);
 
   return (
